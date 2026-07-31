@@ -1,11 +1,13 @@
 package com.lucasm.coursejava.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -101,5 +103,14 @@ public class Order implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+
+    public Double getTotal(){
+        double sum = 0.0;
+        for (OrderItem x : items){
+            sum += x.getSubTotal();
+        }
+        return sum;
     }
 }

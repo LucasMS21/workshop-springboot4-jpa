@@ -1,5 +1,6 @@
 package com.lucasm.coursejava.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,6 +19,8 @@ public class Payment implements Serializable {
 
     @OneToOne
     @MapsId
+    @JsonIgnore
+    
     private Order order;
 
     public Payment(){
